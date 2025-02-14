@@ -1,0 +1,87 @@
+/*
+ *
+ */
+package repaso;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author ESTUDIANTE
+ */
+public class Repaso {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        estudiantes estu = new estudiantes("code01", "Dami", 21, 2.3);
+        
+        List<estudiantes> lista_estudiantes = new ArrayList();
+        
+        lista_estudiantes.add(estu);
+    }
+    
+}
+Eso era main
+
+
+
+
+
+
+<------->
+package repaso;
+
+/**
+ *
+ * @author ESTUDIANTE
+ */
+public class estudiantes {
+    String code;
+    String nombre;
+    private int edad;
+    private double nota;
+    
+    public estudiantes(String code, String nombre, int edad, double nota){
+        this.code = code;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.nota = nota;
+        
+        System.out.println("El estudiante ha sido creado :D");
+    }
+    
+    public void setnombre(String nombre){
+        this.nombre = nombre;
+    }
+    
+    public String getnombre(String nombre){
+        return nombre;
+    }
+    
+    public void setcode(String code){
+        this.code = code;
+    }
+    
+    public String getcode(String code){
+        return code;
+    }
+    
+    public void setedad(int edad){
+        this.edad = edad;
+    }
+    
+    public int getedad(){
+        return edad;
+    }
+    
+    public void setnota(double nota){
+        this.nota = nota;
+    }
+    
+   public double getnota(){
+       return nota;
+   }
+}
