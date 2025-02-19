@@ -1,0 +1,152 @@
+Clases estudiante
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package base_estudiante;
+
+/**
+ *
+ * @author ESTUDIANTE
+ */
+public class estudiante {
+    private String code;
+    private String nombre;
+    private int edad;
+    private double nota;
+    
+    public estudiante(String code, String nombre, int edad, double nota){
+        this.code = code;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.nota = nota;
+        
+        System.out.println("El estudiante ha sido creado :D");
+    }
+    
+    public void setnombre(String nombre){
+        this.nombre = nombre;
+    }
+    
+    public String getnombre(){
+        return nombre;
+    }
+    
+    public void setcode(String code){
+        this.code = code;
+    }
+    
+    public String getcode(){
+        return code;
+    }
+    
+    public void setedad(int edad){
+        this.edad = edad;
+    }
+    
+    public int getedad(){
+        return edad;
+    }
+    
+    public void setnota(double nota){
+        this.nota = nota;
+    }
+    
+   public double getnota(){
+       return nota;
+   }
+
+    @Override
+    public String toString() {
+        return "estudiante{" + "code=" + code + ", nombre=" + nombre + ", edad=" + edad + ", nota=" + nota + '}';
+    }
+   
+   
+}
+
+
+Finaliza clase estudiante
+
+empieza main, se le puso base_estudiante
+
+
+package base_estudiante;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author ESTUDIANTE
+ */
+public class Base_estudiante {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        estudiante[] lista_estudiantes = new estudiante[3];
+        int i = 0;
+        int opc = 0;
+
+        estudiante est;
+
+        do {
+            opc = Integer.parseInt(JOptionPane.showInputDialog("1. Registrar\n2. Listar\n3. Listar estudiante nota >3\n 4. Buscar estudiante por codigo\n5. Salir"));
+
+            switch (opc) {
+                case 1:
+
+                    if (i >= lista_estudiantes.length) {
+                        System.out.println("Supera posicion del vector");
+                    } else {
+                        String code = JOptionPane.showInputDialog("Ingresa el Codigo: ");
+                        String nombre = JOptionPane.showInputDialog("Ingresa el Nombre: ");
+                        int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad: "));
+                        double nota = Double.parseDouble(JOptionPane.showInputDialog("Ingresa la nota: "));
+
+                        est = new estudiante(code, nombre, edad, nota);
+                        lista_estudiantes[i] = est;
+                        i++;
+                    }
+
+                    break;
+                case 2:
+                    for (int x = 0; x < i; x++) {
+                        System.out.println(lista_estudiantes[x].toString());
+                    }
+                    break;
+                case 3:
+                    for (int x = 0; x < i; x++) {
+                        if (lista_estudiantes[x].getnota() <= 3) {
+                            System.out.println("Nombre: " + lista_estudiantes[x].getnombre() + ", Nota: " + lista_estudiantes[x].getnota());
+                        }
+                    }
+                    break;
+                case 4:
+                    String codigo = JOptionPane.showInputDialog("Ingresa el Codigo a buscar: ");
+                    for (int x = 0; x < i; x++) {
+                        if(lista_estudiantes[x].getcode().equals(codigo)){
+                            
+                            System.out.println(lista_estudiantes[x].toString());
+                        }else{
+                            System.out.println("No existe");
+                        }
+                    }
+                    break;
+                case 5:
+                    System.out.println("Saliendo del sistema....");
+                    break;
+                default:
+                    System.out.println("Opcion no valida, intente con otra ");
+            }
+
+        } while (opc != 5);
+
+    }
+
+}
+
