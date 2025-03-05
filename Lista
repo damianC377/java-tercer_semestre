@@ -1,0 +1,157 @@
+-- inicio de clase Nodo--
+package lista;
+
+
+public class Nodo {
+    
+    private String dato;
+    private Nodo enlace;
+
+    public Nodo(String dato) {
+        this.dato = dato;
+        this.enlace = null;
+    }
+
+    public String getDato() {
+        return dato;
+    }
+
+    public void setDato(String dato) {
+        this.dato = dato;
+    }
+
+    public Nodo getEnlace() {
+        return enlace;
+    }
+
+    public void setEnlace(Nodo enlace) {
+        this.enlace = enlace;
+    }
+    
+    
+}
+
+--- final de clase Nodo --- 
+
+--- Inicio de lista ---
+package lista;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author ESTUDIANTE
+ */
+public class List {
+    private Nodo cabeza;
+    private int tamanio;
+
+    public List() {
+        this.cabeza = null;
+        this.tamanio = 0;
+        
+    }
+    
+    public boolean Validarlista(){
+        return cabeza == null;
+    }
+    
+    public String insertarNodo(String dato){
+        // 1. crear nodo
+        Nodo nuevo = new Nodo(dato);
+        
+        //2. lista esta vacia
+        if(Validarlista()){
+            cabeza = nuevo;
+        }else{
+            nuevo.setEnlace(cabeza);
+            cabeza = nuevo;
+        }
+        
+        tamanio++;
+        return "ciudad registrada";
+    
+    }
+    
+    public void mostrardatos(){
+        if(Validarlista()){
+            System.out.println("La lista esta vacia");
+        }else{
+            Nodo aux = cabeza;
+            while(aux != null){
+                System.out.println(aux.getDato());
+                aux = aux.getEnlace();
+            }
+        
+        }
+    }
+    
+    public void buscardato(){
+        Scanner sc = new Scanner(System.in);
+        
+        if(Validarlista()){
+            System.out.println("La lista esta vacia");
+        }else{
+            String ciudad = sc.nextLine();
+            Nodo aux = cabeza;
+            
+           
+        }
+    
+    }
+
+    public int getTamanio() {
+        return tamanio;
+    }
+
+    public void setTamanio(int tamanio) {
+        this.tamanio = tamanio;
+    }
+    
+    
+}
+
+--- fin de la clase lista ---
+
+--- clase main --- 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package lista;
+
+/**
+ *
+ * @author ESTUDIANTE
+ */
+public class Lista {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        List listadoC = new List();
+        
+        System.out.println(listadoC.Validarlista());
+        System.out.println("Cuantos elementos hay: "+ listadoC.getTamanio());
+        listadoC.mostrardatos();
+        
+        System.out.println(listadoC.insertarNodo("Medellin"));
+        System.out.println(listadoC.insertarNodo("Cali"));
+        System.out.println(listadoC.insertarNodo("Quindio"));
+        
+        System.out.println(listadoC.Validarlista());
+        
+        System.out.println("Cuantos elementos hay: "+ listadoC.getTamanio());
+        
+        listadoC.mostrardatos();
+        
+        System.out.println("<--- buscar  --->");
+        
+        listadoC.buscardato();
+
+    }
+    
+}
+
